@@ -1,36 +1,60 @@
 body{
-    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: aquamarine;
 }
 
 .container{
-    width: 75%;
-    height: 95vh;
-    margin: 0 auto;
-    padding: 0;
-    background-color: royalblue;
+    width: 100%;
+    height: 100vh;
 }
 
 .input-container{
     float: left;
     width: 50%;
     height: 100%;
-    padding: 1.5rem;
+    padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: salmon;
+}
+
+.user-input{
+    height:100%;
+    width: 100%;
 }
 
 .dice-column{
     float: left;
     width: 50%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
-.dice-column > button{
+.diceBtn{
+    border: 1px solid #160026;
     width: 100%;
     height: 25%;
+    background-color: indigo;
+    color: white;
+    font-size: 3rem;
+}
+
+.diceBtn:hover{
+    background-color: #3e006b;
+}
+
+.diceBtn:focus{
+    outline: none;
+}
+
+.diceBtn:active{
+    outline: none;
+    background-color: #d69eff;
+    color: black;
 }
 
 .display-container{
@@ -43,10 +67,21 @@ body{
     background-color: goldenrod;
 }
 
-.display-container > * {
+.display-text{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-text > h4, #results-display{
     text-align: center;
     padding: 1rem;
     margin: 1rem;
+}
+
+#results-heading{
     font-size: 2rem;
 }
 
