@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './css/index.css';
 
 class App extends React.Component{
     constructor(props){
@@ -11,7 +11,7 @@ class App extends React.Component{
         };
     }
 
-    diceClick(size){
+    onClickDice(size){
         const newResult = this.roll(size);
         const newHistory = this.state.resultHistory.concat(newResult)
         this.setState({
@@ -26,7 +26,7 @@ class App extends React.Component{
         return(
             <div className='container'>
                 <div className="input-container">
-                    <UserInput onClick={(size) => this.diceClick(size)}/>
+                    <UserInput onClick={(size) => this.onClickDice(size)}/>
                 </div>
                 <div className="display-container">
                     <Display result={this.state.currentResult}/>
@@ -75,17 +75,17 @@ class DiceColumn extends React.Component{
 
 function DiceButton(props){
     return(
-    <button onClick={props.onClick}>d{props.size}</button>
+    <button className="diceBtn" onClick={props.onClick}>d{props.size}</button>
     );
 }
 
 class Display extends React.Component{
     render() {
         return(
-            <>
-                <h4>Result</h4>
+            <div className="display-text">
+                <h4 id="results-heading">Result</h4>
                 <p id="results-display">{this.props.result}</p>
-            </>
+            </div>
         );
     }
 }
