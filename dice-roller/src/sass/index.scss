@@ -1,9 +1,15 @@
-$dice-btn-clr: indigo;
+$dice-btn-bg: indigo;
 $dice-btn-text: white;
-$dice-hover-clr: #3e006b;
+
+$dice-hover-bg: #3e006b;
+
 $dice-outline-clr: #160026;
-$dice-active-clr: #5e00a3;
+
+$dice-active-bg: #5e00a3;
 $dice-active-text: #ffffed;
+
+$display-bg: #e6ae22;
+$display-text: #1a0f1f;
 
 body{
     width: 100%;
@@ -38,13 +44,13 @@ body{
 
 .diceBtn{
     border: 1px solid $dice-outline-clr;
-    background-color: $dice-btn-clr;
+    background-color: $dice-btn-bg;
     color: $dice-btn-text;
     font-size: 3rem;
 }
 
 .diceBtn:hover{
-    background-color: $dice-hover-clr;
+    background-color: $dice-hover-bg;
 }
 
 .diceBtn:focus{
@@ -53,7 +59,7 @@ body{
 
 .diceBtn:active{
     outline: none;
-    background-color: $dice-active-clr;
+    background-color: $dice-active-bg;
     color: $dice-active-text;
 }
 
@@ -64,7 +70,8 @@ body{
     padding: 1.5rem;
     margin: 0;
     box-sizing: border-box;
-    background-color: lightblue;
+    background-color: $display-bg;
+    color: $display-text;
 }
 
 .display-text{
