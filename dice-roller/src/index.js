@@ -23,54 +23,36 @@ class App extends React.Component{
     roll = (n) => Math.floor(Math.random() * Math.floor(n)+1);
 
     render() {
+        const basicDice = [2,4,6,8,10,12,20,100];
+
         return(
             <div className='container'>
-                <div className="input-container">
-                    <UserInput onClick={(size) => this.onClickDice(size)}/>
-                </div>
-                <div className="display-container">
-                    <Display result={this.state.currentResult}/>
-                </div>
+                <UserInput onClick={(size) => this.onClickDice(size)} basicDice={basicDice}/>
+                <Display result={this.state.currentResult}/>
             </div>
         );
     }
 }
 
 class UserInput extends React.Component{
-    renderColumn(dice){
-        return(
-            <DiceColumn renderButton={(size) => this.renderButton(size)} dice={dice}/>
-        );
-    }
-
-    renderButton(size){
-        return <DiceButton 
-                size={size} 
-                onClick={() => this.props.onClick(size)}/>
-    }
-
     render() {
         return(
-            <div className="user-input">
-                {this.renderColumn([2,4,6,8])}
-                {this.renderColumn([10,12,20,100])}
+            <div className="input-container">
+                <DiceList dice={this.props.basicDice} onClick={(size) => this.props.onClick(size)}/>
             </div>
         );
     }
 }
 
-class DiceColumn extends React.Component{
-    render(){
-        return(
-            <div className="dice-column">
-                {/* TODO - Figure out how React arrays/keys/dynamic lists work and refactor this */}
-                {this.props.renderButton(this.props.dice[0])}
-                {this.props.renderButton(this.props.dice[1])}
-                {this.props.renderButton(this.props.dice[2])}
-                {this.props.renderButton(this.props.dice[3])}
-            </div>
-        );
-    }
+function DiceList(props){
+    const diceButtons = props.dice.map((die) => {
+        return <DiceButton 
+        key={`die-${die}`}
+        size={die} 
+        onClick={() => props.onClick(die)}/>
+    });
+
+    return diceButtons;
 }
 
 function DiceButton(props){
@@ -82,9 +64,11 @@ function DiceButton(props){
 class Display extends React.Component{
     render() {
         return(
-            <div className="display-text">
-                <h4 id="results-heading">Result</h4>
-                <p id="results-display">{this.props.result}</p>
+            <div className="display-container">
+                <div className="display-text">
+                    <h4 id="results-heading">Result</h4>
+                    <p id="results-display">{this.props.result}</p>
+                </div>
             </div>
         );
     }

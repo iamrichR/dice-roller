@@ -1,3 +1,10 @@
+$dice-btn-clr: indigo;
+$dice-btn-text: white;
+$dice-hover-clr: #3e006b;
+$dice-outline-clr: #160026;
+$dice-active-clr: #5e00a3;
+$dice-active-text: #ffffed;
+
 body{
     width: 100%;
     height: 100%;
@@ -10,41 +17,34 @@ body{
 .container{
     width: 100%;
     height: 100vh;
+    display: flex;
+    flex-direction: row;
 }
 
 .input-container{
-    float: left;
     width: 50%;
     height: 100%;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-}
-
-.user-input{
-    height:100%;
-    width: 100%;
-}
-
-.dice-column{
-    float: left;
-    width: 50%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
+    background-color: $dice-outline-clr;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    grid-auto-flow: row;
+    grid-auto-rows: 1fr;
+    grid-auto-columns: 25%;
 }
 
 .diceBtn{
-    border: 1px solid #160026;
-    width: 100%;
-    height: 25%;
-    background-color: indigo;
-    color: white;
+    border: 1px solid $dice-outline-clr;
+    background-color: $dice-btn-clr;
+    color: $dice-btn-text;
     font-size: 3rem;
 }
 
 .diceBtn:hover{
-    background-color: #3e006b;
+    background-color: $dice-hover-clr;
 }
 
 .diceBtn:focus{
@@ -53,8 +53,8 @@ body{
 
 .diceBtn:active{
     outline: none;
-    background-color: #d69eff;
-    color: black;
+    background-color: $dice-active-clr;
+    color: $dice-active-text;
 }
 
 .display-container{
