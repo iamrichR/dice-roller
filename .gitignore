@@ -1,3 +1,4 @@
 headspaces/
-node_modules/
 todos/
+dice-roller/node_modules/
+dice-roller/build/
