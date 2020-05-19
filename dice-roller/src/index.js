@@ -10,18 +10,19 @@ class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            currentResult: 0,
-            resultHistory: []
+            currentRoll: {roll: '', result: 0},
+            rollHistory: []
         };
     }
 
     onClickDice(size){
-        const newResult = this.roll(size);
-        const newHistory = this.state.resultHistory.concat(newResult)
+        const newRoll = {roll: `1d${size}`, result: this.roll(size)};
+        const newHistory = this.state.rollHistory.concat(newRoll)
         this.setState({
-            currentResult: newResult,
-            resultHistory: newHistory
+            currentRoll: newRoll,
+            rollHistory: newHistory
         });
+        console.log(this.state.rollHistory);
     }
 
     roll = (n) => Math.floor(Math.random() * Math.floor(n)+1);
@@ -32,7 +33,7 @@ class App extends React.Component{
         return(
             <div className='container'>
                 <UserInput onClick={(size) => this.onClickDice(size)} basicDice={basicDice}/>
-                <Display result={this.state.currentResult}/>
+                <Display currentRoll={this.state.currentRoll}/>
             </div>
         );
     }

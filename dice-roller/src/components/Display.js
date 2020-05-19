@@ -4,15 +4,15 @@ class Display extends React.Component{
     render() {
         return(
             <div className="display-container">
-                <Result rollDetails="1dX: (9)"
-                result = {this.props.result}
+                <ResultDisplay rollDetails={this.props.currentRoll.roll}
+                result = {this.props.currentRoll.result}
                 contextClass="current-result" />
             </div>
         );
     }
 }
 
-function Result(props){
+function ResultDisplay(props){
     return(
         <div className={"result-wrapper " + props.contextClass}>
             <h4 id="result-heading">{props.rollDetails}</h4>
