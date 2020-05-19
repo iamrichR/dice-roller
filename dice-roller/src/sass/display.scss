@@ -1,0 +1,34 @@
+@use 'util/colors';
+
+.display-container{
+    float: right;
+    width: 50%;
+    height: 100%;
+    padding: 1.5rem;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: colors.$display-bg;
+    color: colors.$display-text;
+}
+
+.current-result{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-text > h4, #results-display{
+    text-align: center;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+#result-heading{
+    font-size: 2rem;
+}
+
+#result-display{
+    font-size: 4rem;
+}
