@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import UserInput from './components/UserInput';
+import Display from './components/Display'
 import './css/index.css';
+import './css/userInput.css';
+import './css/display.css';
 
 class App extends React.Component{
     constructor(props){
@@ -29,46 +33,6 @@ class App extends React.Component{
             <div className='container'>
                 <UserInput onClick={(size) => this.onClickDice(size)} basicDice={basicDice}/>
                 <Display result={this.state.currentResult}/>
-            </div>
-        );
-    }
-}
-
-class UserInput extends React.Component{
-    render() {
-        return(
-            <div className="input-container">
-                <DiceList dice={this.props.basicDice} onClick={(size) => this.props.onClick(size)}/>
-            </div>
-        );
-    }
-}
-
-function DiceList(props){
-    const diceButtons = props.dice.map((die) => {
-        return <DiceButton 
-        key={`die-${die}`}
-        size={die} 
-        onClick={() => props.onClick(die)}/>
-    });
-
-    return diceButtons;
-}
-
-function DiceButton(props){
-    return(
-    <button className="diceBtn" onClick={props.onClick}>d{props.size}</button>
-    );
-}
-
-class Display extends React.Component{
-    render() {
-        return(
-            <div className="display-container">
-                <div className="display-text">
-                    <h4 id="results-heading">Result</h4>
-                    <p id="results-display">{this.props.result}</p>
-                </div>
             </div>
         );
     }
