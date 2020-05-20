@@ -15,6 +15,10 @@ class App extends React.Component{
         };
     }
 
+    componentDidUpdate(){
+        this.scrollHistoryDown();
+    }
+
     onClickDice(size){
         const newRoll = {roll: `1d${size}`, result: this.roll(size)};
         const newHistory = this.state.rollHistory.concat(newRoll)
@@ -25,6 +29,12 @@ class App extends React.Component{
     }
 
     roll = (n) => Math.floor(Math.random() * Math.floor(n)+1);
+
+    scrollHistoryDown(){
+        let historyDisplay = document.getElementById('result-history-list');
+
+        historyDisplay.scrollTop = historyDisplay.scrollHeight;
+    }
 
     render() {
         const basicDice = [2,4,6,8,10,12,20,100];
