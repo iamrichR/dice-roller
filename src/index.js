@@ -36,12 +36,17 @@ class App extends React.Component{
         historyDisplay.scrollTop = historyDisplay.scrollHeight;
     }
 
+    showAddButtonModal(){
+        let roll_input = prompt("here you would input a roll type");    
+        return roll_input;
+    }
+
     render() {
         const basicDice = [2,4,6,8,10,12,20,100];
 
         return(
             <div className='container'>
-                <UserInput onClick={(size) => this.onClickDice(size)} basicDice={basicDice}/>
+                <UserInput onClick={(size) => this.onClickDice(size)} basicDice={basicDice} addButtonOnClick={() => this.showAddButtonModal()}/>
                 <Display currentResult={this.state.currentResult} rollHistory={this.state.rollHistory}/>
             </div>
         );
