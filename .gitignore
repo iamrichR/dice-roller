@@ -1,6 +1,4 @@
-headspaces/
-todos/
-dice-roller/node_modules/
-dice-roller/build/
-dice-roller/src/css/
-dice-roller/src/sass/*.bat
+misc/
+node_modules/
+build/
+src/css/
