@@ -10,21 +10,31 @@ class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            currentResult: 0,
-            resultHistory: []
+            currentResult: {roll: '', result: 0},
+            rollHistory: []
         };
     }
 
+    componentDidUpdate(){
+        this.scrollHistoryDown();
+    }
+
     onClickDice(size){
-        const newResult = this.roll(size);
-        const newHistory = this.state.resultHistory.concat(newResult)
+        const newRoll = {roll: `1d${size}`, result: this.roll(size)};
+        const newHistory = this.state.rollHistory.concat(newRoll)
         this.setState({
-            currentResult: newResult,
-            resultHistory: newHistory
+            currentResult: newRoll,
+            rollHistory: newHistory
         });
     }
 
     roll = (n) => Math.floor(Math.random() * Math.floor(n)+1);
+
+    scrollHistoryDown(){
+        let historyDisplay = document.getElementById('result-history-list');
+
+        historyDisplay.scrollTop = historyDisplay.scrollHeight;
+    }
 
     render() {
         const basicDice = [2,4,6,8,10,12,20,100];
@@ -32,7 +42,7 @@ class App extends React.Component{
         return(
             <div className='container'>
                 <UserInput onClick={(size) => this.onClickDice(size)} basicDice={basicDice}/>
-                <Display result={this.state.currentResult}/>
+                <Display currentResult={this.state.currentResult} rollHistory={this.state.rollHistory}/>
             </div>
         );
     }

@@ -3,7 +3,7 @@ import React from 'react';
 class UserInput extends React.Component{
     render() {
         return(
-            <div className="input-container">
+            <div className='input-container'>
                 <DiceList dice={this.props.basicDice} onClick={(size) => this.props.onClick(size)}/>
             </div>
         );
@@ -23,7 +23,7 @@ function DiceList(props){
 
 function DiceButton(props){
     return(
-    <button className="diceBtn" onClick={props.onClick}>d{props.size}</button>
+    <button className='diceBtn' onClick={props.onClick}>d{props.size}</button>
     );
 }
 
