@@ -11,7 +11,8 @@ class App extends React.Component{
         super(props);
         this.state = {
             currentResult: {roll: '', result: 0},
-            rollHistory: []
+            rollHistory: [],
+            customButtons: []
         };
     }
 
@@ -37,8 +38,13 @@ class App extends React.Component{
     }
 
     showAddButtonModal(){
-        let roll_input = prompt("here you would input a roll type");    
-        return roll_input;
+        //assume for now that roll_input is a positive integer
+        //TODO - add input validation after implementing complex rolls
+        const roll_input = parseInt(prompt("here you would input a roll type"));
+        const newCustomButtons = this.state.customButtons.concat([roll_input]);
+        this.setState({
+            customButtons: newCustomButtons
+        });
     }
 
     render() {
@@ -46,7 +52,9 @@ class App extends React.Component{
 
         return(
             <div className='container'>
-                <UserInput onClick={(size) => this.onClickDice(size)} basicDice={basicDice} addButtonOnClick={() => this.showAddButtonModal()}/>
+                <UserInput onClick={(size) => this.onClickDice(size)} 
+                diceButtons={this.state.customButtons.length === 0 ? basicDice : basicDice.concat(this.state.customButtons)} 
+                addButtonOnClick={() => this.showAddButtonModal()}/>
                 <Display currentResult={this.state.currentResult} rollHistory={this.state.rollHistory}/>
             </div>
         );

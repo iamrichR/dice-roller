@@ -5,16 +5,16 @@ class UserInput extends React.Component{
         return(
             <div className='input-container'>
                 <AddButton onClick={this.props.addButtonOnClick}/>
-                <DiceList dice={this.props.basicDice} onClick={(size) => this.props.onClick(size)}/>
+                <DiceList dice={this.props.diceButtons} onClick={(size) => this.props.onClick(size)}/>
             </div>
         );
     }
 }
 
 function DiceList(props){
-    const diceButtons = props.dice.map((die) => {
+    const diceButtons = props.dice.map((die, idx) => {
         return <DiceButton 
-        key={`die-${die}`}
+        key={`die-d${die}__${idx}`}
         size={die} 
         onClick={() => props.onClick(die)}/>
     });
