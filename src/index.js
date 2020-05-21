@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import UserInput from './components/UserInput';
+import CustomButtonForm from './components/CustomButtonForm';
 import Display from './components/Display'
+import Modal from 'react-modal';
 import './css/index.css';
 import './css/userInput.css';
 import './css/display.css';
@@ -12,7 +14,8 @@ class App extends React.Component{
         this.state = {
             currentResult: {roll: '', result: 0},
             rollHistory: [],
-            customButtons: []
+            customButtons: [],
+            modalIsOpen: false
         };
     }
 
@@ -38,12 +41,22 @@ class App extends React.Component{
     }
 
     showAddButtonModal(){
-        //assume for now that roll_input is a positive integer
-        //TODO - add input validation after implementing complex rolls
-        const roll_input = parseInt(prompt("here you would input a roll type"));
-        const newCustomButtons = this.state.customButtons.concat([roll_input]);
         this.setState({
-            customButtons: newCustomButtons
+            modalIsOpen: true
+        })
+
+        // //assume for now that roll_input is a positive integer
+        // //TODO - add input validation after implementing complex rolls
+        // const roll_input = parseInt(prompt("here you would input a roll type"));
+        // const newCustomButtons = this.state.customButtons.concat([roll_input]);
+        // this.setState({
+        //     customButtons: newCustomButtons
+        // });
+    }
+
+    closeModal(){
+        this.setState({
+            modalIsOpen: false
         });
     }
 
@@ -52,6 +65,12 @@ class App extends React.Component{
 
         return(
             <div className='container'>
+                <Modal 
+                isOpen={this.state.modalIsOpen}
+                onRequestClose={() => this.closeModal()}
+                >
+                    <CustomButtonForm closeModal={() => this.closeModal()}/>
+                </Modal>
                 <UserInput onClick={(size) => this.onClickDice(size)} 
                 diceButtons={this.state.customButtons.length === 0 ? basicDice : basicDice.concat(this.state.customButtons)} 
                 addButtonOnClick={() => this.showAddButtonModal()}/>
