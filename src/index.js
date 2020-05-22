@@ -4,6 +4,7 @@ import UserInput from './components/UserInput';
 import CustomButtonForm from './components/CustomButtonForm';
 import Display from './components/Display'
 import Modal from 'react-modal';
+import Roll from './scripts/Roll';
 
 import '../node_modules/normalize.css/normalize.css';
 import './css/index.css';
