@@ -45,20 +45,24 @@ class App extends React.Component{
         this.setState({
             modalIsOpen: true
         })
-
-        // //assume for now that roll_input is a positive integer
-        // //TODO - add input validation after implementing complex rolls
-        // const roll_input = parseInt(prompt("here you would input a roll type"));
-        // const newCustomButtons = this.state.customButtons.concat([roll_input]);
-        // this.setState({
-        //     customButtons: newCustomButtons
-        // });
     }
 
     closeModal(){
         this.setState({
             modalIsOpen: false
         });
+    }
+
+    handleSubmit(event){
+        const newValue = parseInt(event.target.elements[0].value);
+        event.preventDefault();
+        if(Number.isInteger(newValue)){
+            const newCustomButtons = this.state.customButtons.concat([newValue]);
+            this.setState({
+                customButtons: newCustomButtons
+            });
+            this.closeModal();
+        }
     }
 
     render() {
@@ -70,7 +74,8 @@ class App extends React.Component{
                 isOpen={this.state.modalIsOpen}
                 onRequestClose={() => this.closeModal()}
                 >
-                    <CustomButtonForm closeModal={() => this.closeModal()}/>
+                    <CustomButtonForm closeModal={() => this.closeModal()}
+                    handleSubmit={(event) => this.handleSubmit(event)}/>
                 </Modal>
                 <UserInput onClick={(size) => this.onClickDice(size)} 
                 diceButtons={this.state.customButtons.length === 0 ? basicDice : basicDice.concat(this.state.customButtons)} 
