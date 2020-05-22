@@ -1,0 +1,36 @@
+@use '_colors';
+
+.modal-content{
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.modal-input-container{
+    font-size: 1.5rem;
+    width: 50%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-btn-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.input-row{
+    margin: 0.5rem 0;
+}
+
+.input-row > label{
+    margin-right: 0.5rem;
+}
+
+.modal-btn{
+    width: 7rem;
+    height: 2rem;
+}

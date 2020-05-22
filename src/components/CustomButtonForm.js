@@ -2,15 +2,23 @@ import React from 'react';
 
 function CustomButtonForm(props){
     return(
-        <div className='modal-input-container'>
-            <h2>Add a custom Dice</h2>
-            <p>Please enter custom dice size</p>
-            <form className='custom-button-form'>
-                <label for='input-roll-details'>Custom Roll</label>
-                <input id='input-roll-details' type='text' name='input-roll-details'></input>
-                <input id='input-submit' type='submit' name='input-submit'>Submit</input>
-            </form>
-            <button onClick={() => props.closeModal()}>Close</button>
+        <div className='modal-content'>
+            <div className='modal-input-container'>
+                <div className='form-heading'>
+                    <h3>Add a custom Dice</h3>
+                    <p>Please enter custom dice size</p>
+                </div>
+                <form className='custom-btn-form'>
+                    <div className='input-row'>
+                        <label for='input-roll-details' className='label-roll-details'>Custom Roll</label>
+                        <input id='input-roll-details' className='input-text' type='text' name='input-roll-details'></input>
+                    </div>
+                    <div className='input-row'>
+                        <input id='input-submit' className='input-submit modal-btn' type='submit' name='input-submit' />
+                    </div>
+                </form>
+                <button className='modal-close-btn modal-btn' onClick={() => props.closeModal()}>Close</button>
+            </div>
         </div>
     );
 }

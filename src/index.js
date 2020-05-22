@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 import './css/index.css';
 import './css/userInput.css';
 import './css/display.css';
+import './css/form.css';
 
 class App extends React.Component{
     constructor(props){
