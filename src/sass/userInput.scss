@@ -1,15 +1,15 @@
 @use '_colors';
 
 .input-container{
-    width: 50%;
+    width: 70%;
     height: 100%;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     background-color: colors.$dice-outline-clr;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     grid-auto-flow: row;
     grid-auto-rows: 1fr;
     grid-auto-columns: 25%;
@@ -34,8 +34,4 @@
     outline: none;
     background-color: colors.$dice-active-bg;
     color: colors.$dice-active-text;
-}
-
-.addBtn{
-    font-size: 3rem;
 }

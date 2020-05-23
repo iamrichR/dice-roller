@@ -68,16 +68,18 @@ class App extends React.Component{
         return(
             <div className='container'>
                 <Modal 
-                isOpen={this.state.modalIsOpen}
-                onRequestClose={() => this.closeModal()}
+                    isOpen={this.state.modalIsOpen}
+                    onRequestClose={() => this.closeModal()}
                 >
                     <CustomButtonForm closeModal={() => this.closeModal()}
-                    handleSubmit={(event) => this.handleSubmit(event)}/>
+                        handleSubmit={(event) => this.handleSubmit(event)}/>
                 </Modal>
                 <UserInput onClick={(size) => this.onClickDice(size)} 
-                diceButtons={this.state.customButtons.length === 0 ? basicDice : basicDice.concat(this.state.customButtons)} 
-                addButtonOnClick={() => this.showAddButtonModal()}/>
-                <Display currentResult={this.state.currentResult} rollHistory={this.state.rollHistory}/>
+                    diceButtons={this.state.customButtons.length === 0 ?
+                    basicDice : basicDice.concat(this.state.customButtons)} />
+                <Display currentResult={this.state.currentResult} 
+                    rollHistory={this.state.rollHistory}
+                    addButtonOnClick={() => this.showAddButtonModal()} />
             </div>
         );
     }

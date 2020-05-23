@@ -3,9 +3,10 @@ import React from 'react';
 function Display(props){
     return(
         <div className='display-container'>
-            <ResultHistoryDisplay rollHistory={props.rollHistory}/>
             <ResultDisplay result={props.currentResult}
                 contextClass='current-result' />
+            <ResultHistoryDisplay rollHistory={props.rollHistory}/>
+            <AddButton onClick={props.addButtonOnClick}/>
         </div>
     );
 }
@@ -16,8 +17,8 @@ function ResultHistoryDisplay(props){
         idx++;
         return (<li key={'history-' + idx}>
             <ResultDisplay 
-            result={item}
-            contextClass='historical-result' />
+                result={item}
+                contextClass='historical-result' />
             </li>);
     });
 
@@ -36,6 +37,12 @@ function ResultDisplay(props){
             <h4 className='result-details'>{props.result.roll}</h4>
             <p className='result-display'>{props.result.result}</p>
         </div>
+    );
+}
+
+function AddButton(props){
+    return(
+        <button className='addBtn' onClick={props.onClick}>Add Custom Roll</button>
     );
 }
 
