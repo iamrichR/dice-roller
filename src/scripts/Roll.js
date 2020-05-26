@@ -69,7 +69,15 @@ class Roll{
         return this.fullRoll_Repeat(this.numRolls);
     }
 
-    //TODO - add a toString()
+    toString(){
+        if(this.numDice === 1 && this.postRollAdd === 0
+            && this.preRollAdd === 0 && this.numRolls === 1){
+                return `1d${this.diceSize}`;
+        } else{
+            let innerStr = `${this.numDice}d(${this.diceSize}+${this.preRollAdd})`;
+            return `${this.numRolls}[${innerStr} + ${this.postRollAdd}]`;
+        }
+    }
 }
 
 export default Roll;

@@ -24,16 +24,15 @@ class App extends React.Component{
         this.scrollHistoryDown();
     }
 
-    onClickDice(size){
-        const newRoll = {roll: `1d${size}`, result: this.roll(size)};
+    onClickDice(roll){
+        const newRoll = {roll:  roll.toString(), result: roll.roll()};
+        console.log(newRoll);
         const newHistory = this.state.rollHistory.concat(newRoll)
         this.setState({
             currentResult: newRoll,
             rollHistory: newHistory
         });
     }
-
-    roll = (n) => Math.floor(Math.random() * Math.floor(n)+1);
 
     scrollHistoryDown(){
         let historyDisplay = document.getElementById('result-history-list');
@@ -77,7 +76,7 @@ class App extends React.Component{
                     <CustomButtonForm closeModal={() => this.closeModal()}
                         handleSubmit={(event) => this.handleSubmit(event)}/>
                 </Modal>
-                <UserInput onClick={(size) => this.onClickDice(size)} 
+                <UserInput onClick={(roll) => this.onClickDice(roll)} 
                     diceButtons={this.state.customButtons.length === 0 ?
                     basicDice : basicDice.concat(this.state.customButtons)} />
                 <Display currentResult={this.state.currentResult} 
