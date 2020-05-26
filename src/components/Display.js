@@ -5,8 +5,10 @@ function Display(props){
         <div className='display-container'>
             <ResultDisplay result={props.currentResult}
                 contextClass='current-result' />
-            <ResultHistoryDisplay rollHistory={props.rollHistory}/>
-            <AddButton onClick={props.addButtonOnClick}/>
+            <div className='details-view'>
+                <ResultHistoryDisplay rollHistory={props.rollHistory}/>
+                <AddButton onClick={props.addButtonOnClick}/>
+            </div>
         </div>
     );
 }

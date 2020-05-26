@@ -13,8 +13,13 @@
     flex-direction: row-reverse;
 }
 
-.result-history{
+.details-view{
     height: 100%;
+    width: 50%;
+}
+
+.result-history{
+    height: 80%;
     width: 100%;
     border: 1px solid colors.$display-outline;
     background-color: colors.$history-bg;
@@ -22,7 +27,7 @@
 
 .result-history-list{
     margin: 0;
-    padding: 1rem;
+    padding: 1.5rem;
     height: 100%;
     width: 100%;
     list-style: none;
@@ -50,9 +55,26 @@
     margin: 0.5rem 0;
 }
 
-.current-result{
-    height: 50%;
+.addBtn{
     width: 100%;
+    height: 20%;
+    border: 1px solid colors.$display-outline;
+    font-size: 1.5rem;
+    background-color: colors.$addbtn-bg;
+    color: colors.$display-text;
+}
+
+.addBtn:hover{
+    background-color: colors.$addbtn-hover-bg;
+}
+
+.addBtn:active{
+    font-size: 1.9rem;
+}
+
+.current-result{
+    height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -67,14 +89,17 @@
 
 .current-result > .result-details{
     font-size: 2rem;
+    margin-bottom: 0;
 }
 
 .current-result > .result-display{
     font-size: 4rem;
 }
 
-.addBtn{
-    font-size: 2rem;
+@media #{screens.$medium} {
+    .addBtn{
+        font-size: 2rem;
+    }
 }
 
 @media #{screens.$large} {
@@ -85,8 +110,14 @@
         flex-direction: column;
     }
 
-    .result-history{
+    .current-result{
         height: 50%;
+        width: 100%;
+    }
+
+    .details-view{
+        height: 50%;
+        width: 100%;
     }
 
 }
