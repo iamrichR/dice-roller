@@ -4,6 +4,8 @@ import UserInput from './components/UserInput';
 import CustomButtonForm from './components/CustomButtonForm';
 import Display from './components/Display'
 import Modal from 'react-modal';
+
+import '../node_modules/normalize.css/normalize.css';
 import './css/index.css';
 
 class App extends React.Component{

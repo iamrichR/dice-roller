@@ -22,6 +22,7 @@
     height: 80%;
     width: 100%;
     border: 1px solid colors.$display-outline;
+    box-sizing: border-box;
     background-color: colors.$history-bg;
 }
 
@@ -94,6 +95,17 @@
 
 .current-result > .result-display{
     font-size: 4rem;
+}
+
+@media #{screens.$x-sm} {
+    .result-history{
+        height: 60%;
+    }
+    
+    .addBtn{
+        height: 40%;
+        font-size: 1.25rem;
+    }
 }
 
 @media #{screens.$medium} {
