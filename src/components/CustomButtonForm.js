@@ -4,13 +4,13 @@ class CustomButtonForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            rollDetailValue: 3
+            diceSizeValue: 3
         };
     }
 
-    handleChange(event){
+    handleChange(event,keyStr){
         this.setState({
-            rollDetailValue: event.target.value
+            [event.target.name]: event.target.value
         });
     }
 
@@ -24,11 +24,16 @@ class CustomButtonForm extends React.Component{
                     </div>
                     <form className='custom-btn-form' onSubmit={this.props.handleSubmit}>
                         <div className='input-row'>
-                            <label for='input-roll-details' className='label-roll-details'>Custom Roll</label>
-                            <input id='input-roll-details' className='input-text' 
-                            type='text' name='input-roll-details'
-                            value={this.state.rollDetailValue} 
-                            onChange={(event) => this.handleChange(event)} />
+                            {/* dice size */}
+                            <label for='input-dice-size' className='label-dice-size'>Dice Size (dX)</label>
+                            <input id='input-dice-size' className='input-text' 
+                            type='text' name='diceSizeValue'
+                            value={this.state.diceSizeValue} 
+                            onChange={(event) => this.handleChange(event, 'diceSizeValue')} />
+                            {/* number of dice */}
+                            {/* modifier to dice size */}
+                            {/* modifier to roll result */}
+                            {/* "do you want to run this roll multiple times?" */}
                         </div>
                         <div className='input-row'>
                             <input id='input-submit' className='input-submit modal-btn' type='submit' name='input-submit' />
