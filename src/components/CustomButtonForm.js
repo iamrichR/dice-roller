@@ -4,11 +4,12 @@ class CustomButtonForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            diceSizeValue: 3
+            diceSize: '',
+            numDice: ''
         };
     }
 
-    handleChange(event,keyStr){
+    handleChange(event){
         this.setState({
             [event.target.name]: event.target.value
         });
@@ -25,15 +26,29 @@ class CustomButtonForm extends React.Component{
                     <form className='custom-btn-form' onSubmit={this.props.handleSubmit}>
                         <div className='input-row'>
                             {/* dice size */}
-                            <label for='input-dice-size' className='label-dice-size'>Dice Size (dX)</label>
+                            <label for='input-dice-size' className='label-dice-size input-label'>
+                                Dice Size (dX)
+                            </label>
                             <input id='input-dice-size' className='input-text' 
-                            type='text' name='diceSizeValue'
-                            value={this.state.diceSizeValue} 
-                            onChange={(event) => this.handleChange(event, 'diceSizeValue')} />
+                            type='text' name='diceSize'
+                            value={this.state.diceSize} 
+                            onChange={(event) => this.handleChange(event)} />
+                        </div>
+                        <div className='input-row'>
                             {/* number of dice */}
+                            <label for='input-num-dice' className='label-num-dice input-label'>
+                                Number of Dice
+                            </label>
+                            <input id='input-num-dice' className='input-text'
+                            type='text' name='numDice'
+                            value={this.state.numDice}
+                            onChange={(event) => this.handleChange(event)} />
                             {/* modifier to dice size */}
                             {/* modifier to roll result */}
                             {/* "do you want to run this roll multiple times?" */}
+                        </div>
+                        <div className='input-row'>
+                            Your Custom Roll:  {this.state.numDice}d{this.state.diceSize}
                         </div>
                         <div className='input-row'>
                             <input id='input-submit' className='input-submit modal-btn' type='submit' name='input-submit' />
