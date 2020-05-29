@@ -24,8 +24,8 @@ class CustomButtonForm extends React.Component{
                         <p>Please enter custom dice size</p>
                     </div>
                     <form className='custom-btn-form' onSubmit={this.props.handleSubmit}>
-                        <div className='input-row'>
-                            {/* dice size */}
+                        {/* dice size */}
+                        {/* <div className='input-row'>
                             <label for='input-dice-size' className='label-dice-size input-label'>
                                 Dice Size (dX)
                             </label>
@@ -33,7 +33,11 @@ class CustomButtonForm extends React.Component{
                             type='text' name='diceSize'
                             value={this.state.diceSize} 
                             onChange={(event) => this.handleChange(event)} />
-                        </div>
+                        </div> */}
+                        <FormRow inputID='diceSize'
+                        labelText='Dice Size (dX)' 
+                        value={this.state.diceSize}
+                        handleChange={(event) => this.handleChange(event)} />
                         <div className='input-row'>
                             {/* number of dice */}
                             <label for='input-num-dice' className='label-num-dice input-label'>
@@ -43,8 +47,8 @@ class CustomButtonForm extends React.Component{
                             type='text' name='numDice'
                             value={this.state.numDice}
                             onChange={(event) => this.handleChange(event)} />
-                            {/* modifier to dice size */}
                             {/* modifier to roll result */}
+                            {/* modifier to dice size */}
                             {/* "do you want to run this roll multiple times?" */}
                         </div>
                         <div className='input-row'>
@@ -59,6 +63,20 @@ class CustomButtonForm extends React.Component{
             </div>
         );
     }
+}
+
+function FormRow(props){
+    return(
+        <div className='input-row'>
+            <label for={props.inputID} className={`label-${props.inputID} input-label`}>
+                {props.labelText}
+            </label>
+            <input id={`input-${props.inputID}`} className='input-text' 
+            type='text' name={props.inputID}
+            value={props.value} 
+            onChange={(event) => props.handleChange(event)} />
+        </div>
+    );
 }
 
 export default CustomButtonForm;
