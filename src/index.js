@@ -53,6 +53,8 @@ class App extends React.Component{
     }
 
     handleSubmit(event){
+        const forms = event.target.elements;
+        const newRoll = new Roll(forms[0], forms[1], forms[2], forms[3]);
         const newValue = parseInt(event.target.elements[0].value);
         event.preventDefault();
         if(Number.isInteger(newValue)){
