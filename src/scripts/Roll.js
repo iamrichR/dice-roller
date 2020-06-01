@@ -64,9 +64,11 @@ class Roll{
     }
 
     toString(){
+        const numRollsStr = this.numRolls <= 1 ? '' : ("roll " + this.numRolls + " times");
+
         if(this.numDice === 1 && this.postRollAdd === 0
             && this.numRolls === 1){
-                return `1d${this.diceSize}`;
+                return `d${this.diceSize}`;
         } else{
             let innerStr = `${this.numDice}d${this.diceSize}`;
             return `${this.numRolls}[${innerStr} + ${this.postRollAdd}]`;

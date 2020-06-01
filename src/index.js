@@ -12,9 +12,10 @@ import './css/index.css';
 class App extends React.Component{
     constructor(props){
         super(props);
+        const basicDice = this.createBasicDice();
         this.state = {
             currentResult: {roll: '', result: 0},
-            rolls: [],
+            rolls: basicDice,
             rollHistory: [],
             customButtons: [],
             modalIsOpen: false
@@ -23,6 +24,18 @@ class App extends React.Component{
 
     componentDidUpdate(){
         this.scrollHistoryDown();
+    }
+
+    createBasicDice(){
+        const basicDice = [2,4,6,8,10,12,20,100];
+        let rollsToAdd = [];
+
+        basicDice.forEach(item => {
+            const newRoll = new Roll(item);
+            rollsToAdd = rollsToAdd.concat(newRoll);
+        });
+
+        return rollsToAdd;
     }
 
     onClickDice(roll){
@@ -68,8 +81,6 @@ class App extends React.Component{
     }
 
     render() {
-        const basicDice = [2,4,6,8,10,12,20,100];
-
         return(
             <div className='container'>
                 <Modal 
@@ -80,8 +91,7 @@ class App extends React.Component{
                         handleSubmit={(event) => this.handleSubmit(event)}/>
                 </Modal>
                 <UserInput onClick={(roll) => this.onClickDice(roll)} 
-                    diceButtons={this.state.customButtons.length === 0 ?
-                    basicDice : basicDice.concat(this.state.customButtons)} />
+                    rolls={this.state.rolls} />
                 <Display currentResult={this.state.currentResult} 
                     rollHistory={this.state.rollHistory}
                     addButtonOnClick={() => this.showAddButtonModal()} />

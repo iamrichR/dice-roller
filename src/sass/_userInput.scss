@@ -16,22 +16,22 @@
     
 }
 
-.diceBtn{
+.rollBtn{
     border: 1px solid colors.$dice-outline-clr;
     background-color: colors.$dice-btn-bg;
     color: colors.$dice-btn-text;
     font-size: 3rem;
 }
 
-.diceBtn:hover{
+.rollBtn:hover{
     background-color: colors.$dice-hover-bg;
 }
 
-.diceBtn:focus{
+.rollBtn:focus{
     outline: none;
 }
 
-.diceBtn:active{
+.rollBtn:active{
     outline: none;
     background-color: colors.$dice-active-bg;
     color: colors.$dice-active-text;

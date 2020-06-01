@@ -1,37 +1,30 @@
 import React from 'react';
 import Roll from '../scripts/Roll'
 
-class UserInput extends React.Component{
-    createBasicRoll(size){
-        return new Roll(size);
-    }
-
-    render() {
-        return(
+function UserInput(props){
+    return(
             <div className='input-container'>
-                <DiceList dice={this.props.diceButtons} 
-                    onClick={(roll) => this.props.onClick(roll)} 
-                    createBasicRoll={(size) => this.createBasicRoll(size)}/>
+                <RollList rolls={props.rolls} 
+                    onClick={(roll) => props.onClick(roll)} />
             </div>
         );
-    }
 }
 
-function DiceList(props){
-    const diceButtons = props.dice.map((die, idx) => {
-        return <DiceButton 
-                key={`die-d${die}__${idx}`}
-                size={die}
-                onClick={() => props.onClick(props.createBasicRoll(die))}/>
+function RollList(props){
+    const diceButtons = props.rolls.map((roll, idx) => {
+        return <RollButton 
+                key={`roller-${roll.toString()}__${idx}`}
+                text={roll.toString()}
+                onClick={() => props.onClick(roll)}/>
     });
 
     return diceButtons;
 }
 
-function DiceButton(props){
+function RollButton(props){
     return(
-    <button className='diceBtn' 
-        onClick={props.onClick}>d{props.size}</button>
+        <button className='rollBtn' 
+            onClick={props.onClick}>{props.text}</button>
     );
 }
 
