@@ -1,36 +1,39 @@
 import React from 'react';
+import Roll from '../scripts/Roll';
 
 class CustomButtonForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            numRolls: 1,
-            numDice: 1,
-            diceSize: 20,
-            postRollAdd: 0
+            roll: new Roll()
         };
     }
 
     handleChange(event){
-        if(event.target.value === ''){
-            this.setState({
-                [event.target.name]: event.target.value
-            });
-        } else{
-            const newValue = parseInt(event.target.value);
-            if(Number.isInteger(newValue)){
-                this.setState({
-                    [event.target.name]: newValue
-                });
-            }
-        }
+        // if(event.target.value === ''){
+        //     this.setState({
+        //         [event.target.name]: event.target.value
+        //     });
+        // } else{
+        //     const newValue = parseInt(event.target.value);
+        //     if(Number.isInteger(newValue)){
+        //         this.setState({
+        //             [event.target.name]: newValue
+        //         });
+        //     }
+        // }
+        const newRoll = Object.assign({}, this.state.roll, {[event.target.name]: event.target.value});
+
+        this.setState({
+            roll: newRoll
+        });
     }
 
     render(){
         // const rollDisplayStr = `${this.state.numRolls <= 1 ? '' : this.state.numRolls} ( ${this.state.numDice}d${this.state.diceSize}+${this.state.postRollAdd} )`;
-        const repeatDetailStr = this.state.numRolls <= 1 ? '' : ("roll " + this.state.numRolls + " times");
-        const innerRollStr = `${this.state.numDice}d${this.state.diceSize}+${this.state.postRollAdd}`;
-        const rollDisplayStr = `( ${innerRollStr} ) ${repeatDetailStr}`;
+        // const repeatDetailStr = this.state.numRolls <= 1 ? '' : ("roll " + this.state.numRolls + " times");
+        // const innerRollStr = `${this.state.numDice}d${this.state.diceSize}+${this.state.postRollAdd}`;
+        // const rollDisplayStr = `( ${innerRollStr} ) ${repeatDetailStr}`;
 
         return(
             <div className='modal-content'>
@@ -44,28 +47,28 @@ class CustomButtonForm extends React.Component{
                         {/* dice size */}
                         <FormRow inputID='diceSize'
                             labelText='Dice Size (dX)' 
-                            value={this.state.diceSize}
+                            value={this.state.roll.diceSize}
                             handleChange={(event) => this.handleChange(event)} />
                         {/* number of dice */}
                         <FormRow inputID='numDice'
                             labelText='Number of Dice' 
-                            value={this.state.numDice}
+                            value={this.state.roll.numDice}
                             handleChange={(event) => this.handleChange(event)} />
                         {/* modifier to roll result */}
                         <FormRow inputID='postRollAdd'
                             labelText='Modifier to roll result' 
-                            value={this.state.postRollAdd}
+                            value={this.state.roll.postRollAdd}
                             handleChange={(event) => this.handleChange(event)} />
                         {/* "do you want to run this roll multiple times?" */}
                         <FormRow inputID='numRolls'
                             labelText='How many times to perform Roll?' 
-                            value={this.state.numRolls}
+                            value={this.state.roll.numRolls}
                             handleChange={(event) => this.handleChange(event)} />
                         <div className='input-row'>
-                            <label for=''>Your Custom Roll:</label>
+                            <label htmlFor=''>Your Custom Roll:</label>
                             <input type='text' 
-                                value={rollDisplayStr}
-                                readonly />
+                                value={this.state.roll.toString()}
+                                readOnly />
                         </div>
                         <div className='input-row'>
                             <input id='input-submit' className='input-submit modal-btn' type='submit' name='input-submit' />
@@ -81,7 +84,7 @@ class CustomButtonForm extends React.Component{
 function FormRow(props){
     return(
         <div className='input-row'>
-            <label for={props.inputID} className={`label-${props.inputID} input-label`}>
+            <label htmlFor={props.inputID} className={`label-${props.inputID} input-label`}>
                 {props.labelText}
             </label>
             <input id={`input-${props.inputID}`} className='input-text' 

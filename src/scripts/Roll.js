@@ -32,7 +32,7 @@ class Roll{
 
     //TODO - just for fun, figure out how to use functional programming
     //to refactor into a generic "repeat roll" function that you can pass basic or full into
-    basicRoll_Repeat(num){
+    basicRoll_Repeat  = function(num){
         let result = this.basicRoll();
         num--;
 
@@ -44,11 +44,11 @@ class Roll{
         return result;
     }
 
-    fullRoll(){
+    fullRoll  = function(){
         return this.basicRoll_Repeat(this.numDice) + this.postRollAdd;
     }
 
-    fullRoll_Repeat(num){
+    fullRoll_Repeat  = function(num){
         let result = this.fullRoll();
         num--;
         
@@ -59,11 +59,11 @@ class Roll{
         return result;
     }
 
-    roll(){
+    roll  = function(){
         return this.fullRoll_Repeat(this.numRolls);
     }
 
-    toString(){
+    toString  = function(){
         const numRollsStr = this.numRolls <= 1 ? '' : ("roll " + this.numRolls + " times");
 
         if(this.numDice === 1 && this.postRollAdd === 0
@@ -74,6 +74,7 @@ class Roll{
             return `${this.numRolls}[${innerStr} + ${this.postRollAdd}]`;
         }
     }
+    
 }
 
 export default Roll;
