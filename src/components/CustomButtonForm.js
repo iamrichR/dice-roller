@@ -5,7 +5,8 @@ class CustomButtonForm extends React.Component{
         super(props);
         this.state = {
             diceSize: '',
-            numDice: ''
+            numDice: '',
+            postRollAdd: ''
         };
     }
 
@@ -25,34 +26,23 @@ class CustomButtonForm extends React.Component{
                     </div>
                     <form className='custom-btn-form' onSubmit={this.props.handleSubmit}>
                         {/* dice size */}
-                        {/* <div className='input-row'>
-                            <label for='input-dice-size' className='label-dice-size input-label'>
-                                Dice Size (dX)
-                            </label>
-                            <input id='input-dice-size' className='input-text' 
-                            type='text' name='diceSize'
-                            value={this.state.diceSize} 
-                            onChange={(event) => this.handleChange(event)} />
-                        </div> */}
                         <FormRow inputID='diceSize'
                         labelText='Dice Size (dX)' 
                         value={this.state.diceSize}
                         handleChange={(event) => this.handleChange(event)} />
+                        {/* number of dice */}
+                        <FormRow inputID='numDice'
+                        labelText='Number of Dice' 
+                        value={this.state.numDice}
+                        handleChange={(event) => this.handleChange(event)} />
+                        {/* modifier to roll result */}
+                        <FormRow inputID='postRollAdd'
+                        labelText='Modifier to roll result' 
+                        value={this.state.postRollAdd}
+                        handleChange={(event) => this.handleChange(event)} />
+                        {/* "do you want to run this roll multiple times?" */}
                         <div className='input-row'>
-                            {/* number of dice */}
-                            <label for='input-num-dice' className='label-num-dice input-label'>
-                                Number of Dice
-                            </label>
-                            <input id='input-num-dice' className='input-text'
-                            type='text' name='numDice'
-                            value={this.state.numDice}
-                            onChange={(event) => this.handleChange(event)} />
-                            {/* modifier to roll result */}
-                            {/* modifier to dice size */}
-                            {/* "do you want to run this roll multiple times?" */}
-                        </div>
-                        <div className='input-row'>
-                            Your Custom Roll:  {this.state.numDice}d{this.state.diceSize}
+                            Your Custom Roll:  {this.state.numDice}d{this.state.diceSize}+{this.state.postRollAdd}
                         </div>
                         <div className='input-row'>
                             <input id='input-submit' className='input-submit modal-btn' type='submit' name='input-submit' />
