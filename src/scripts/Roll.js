@@ -1,7 +1,7 @@
 class Roll{
-    // numRolls(numDice(diceSize+preRollAdd)+postRollAdd)
-    // default is:  1(1(20+0)+0) => 1d20
-    constructor(diceSize, numDice, postRollAdd, numRolls, preRollAdd){
+    // numRolls(numDice(diceSize)+postRollAdd)
+    // default is:  1(1d20+0) => 1d20
+    constructor(diceSize, numDice, postRollAdd, numRolls){
         if(diceSize === undefined){
             this.diceSize = 20;
         } else{
@@ -26,15 +26,9 @@ class Roll{
             this.numRolls = numRolls;
         }
         
-        if(preRollAdd === undefined){
-            this.preRollAdd = 0;
-        } else{
-            this.preRollAdd = preRollAdd;
-        }
-        
     }
 
-    basicRoll = () => Math.floor(Math.random() * Math.floor(this.diceSize + this.preRollAdd)+1);
+    basicRoll = () => Math.floor(Math.random() * Math.floor(this.diceSize)+1);
 
     //TODO - just for fun, figure out how to use functional programming
     //to refactor into a generic "repeat roll" function that you can pass basic or full into
@@ -71,10 +65,10 @@ class Roll{
 
     toString(){
         if(this.numDice === 1 && this.postRollAdd === 0
-            && this.preRollAdd === 0 && this.numRolls === 1){
+            && this.numRolls === 1){
                 return `1d${this.diceSize}`;
         } else{
-            let innerStr = `${this.numDice}d(${this.diceSize}+${this.preRollAdd})`;
+            let innerStr = `${this.numDice}d${this.diceSize}`;
             return `${this.numRolls}[${innerStr} + ${this.postRollAdd}]`;
         }
     }
