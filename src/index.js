@@ -14,6 +14,7 @@ class App extends React.Component{
         super(props);
         this.state = {
             currentResult: {roll: '', result: 0},
+            rolls: [],
             rollHistory: [],
             customButtons: [],
             modalIsOpen: false
