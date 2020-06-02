@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/dice-roller/static/css/main.d6bcbeea.chunk.css",
-    "main.js": "/dice-roller/static/js/main.850b688b.chunk.js",
-    "main.js.map": "/dice-roller/static/js/main.850b688b.chunk.js.map",
+    "main.js": "/dice-roller/static/js/main.0aa093d7.chunk.js",
+    "main.js.map": "/dice-roller/static/js/main.0aa093d7.chunk.js.map",
     "runtime-main.js": "/dice-roller/static/js/runtime-main.3ad158a9.js",
     "runtime-main.js.map": "/dice-roller/static/js/runtime-main.3ad158a9.js.map",
     "static/css/2.764ccc25.chunk.css": "/dice-roller/static/css/2.764ccc25.chunk.css",
     "static/js/2.7744f3f8.chunk.js": "/dice-roller/static/js/2.7744f3f8.chunk.js",
     "static/js/2.7744f3f8.chunk.js.map": "/dice-roller/static/js/2.7744f3f8.chunk.js.map",
     "index.html": "/dice-roller/index.html",
-    "precache-manifest.3310c0f54ceffc57ccdae28f267b3a11.js": "/dice-roller/precache-manifest.3310c0f54ceffc57ccdae28f267b3a11.js",
+    "precache-manifest.52ce40a00d9e6b60c09068e4b033fc0d.js": "/dice-roller/precache-manifest.52ce40a00d9e6b60c09068e4b033fc0d.js",
     "service-worker.js": "/dice-roller/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/dice-roller/static/css/2.764ccc25.chunk.css.map",
     "static/css/main.d6bcbeea.chunk.css.map": "/dice-roller/static/css/main.d6bcbeea.chunk.css.map",
@@ -20,6 +20,6 @@
     "static/css/2.764ccc25.chunk.css",
     "static/js/2.7744f3f8.chunk.js",
     "static/css/main.d6bcbeea.chunk.css",
-    "static/js/main.850b688b.chunk.js"
+    "static/js/main.0aa093d7.chunk.js"
   ]
 }
