@@ -37,7 +37,7 @@ function ResultDisplay(props){
     return(
         <div className={'result-wrapper ' + props.contextClass}>
             <h4 className='result-details'>{props.result.roll}</h4>
-            <p className='result-display'>{props.result.result}</p>
+            <p className='result-display'>{props.result.result['total']}</p>
         </div>
     );
 }

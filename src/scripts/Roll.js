@@ -1,29 +1,32 @@
 class Roll{
-    // numRolls(numDice(diceSize)+postRollAdd)
-    // default is:  1(1d20+0) => 1d20
     constructor(diceSize, numDice, postRollAdd, numRolls){
-        if(diceSize === undefined){
+        const initDiceSize = parseInt(diceSize);
+        const initNumDice = parseInt(numDice);
+        const initPostRollAdd = parseInt(postRollAdd);
+        const initNumRolls = parseInt(numRolls);
+
+        if(diceSize === undefined || !Number.isInteger(initDiceSize)){
             this.diceSize = 20;
         } else{
-            this.diceSize = diceSize;
+            this.diceSize = parseInt(initDiceSize);
         }
         
-        if(numDice === undefined){
+        if(numDice === undefined || !Number.isInteger(initNumDice)){
             this.numDice = 1;
         } else{
-            this.numDice = numDice;
+            this.numDice = initNumDice;
         }
         
-        if(postRollAdd === undefined){
+        if(postRollAdd === undefined || !Number.isInteger(initPostRollAdd)){
             this.postRollAdd = 0;
         } else{
-            this.postRollAdd = postRollAdd;
+            this.postRollAdd = initPostRollAdd;
         }
 
-        if(numRolls === undefined){
+        if(numRolls === undefined || !Number.isInteger(initNumRolls)){
             this.numRolls = 1;
         } else{
-            this.numRolls = numRolls;
+            this.numRolls = initNumRolls;
         }
         
     }
@@ -32,35 +35,52 @@ class Roll{
 
     //TODO - just for fun, figure out how to use functional programming
     //to refactor into a generic "repeat roll" function that you can pass basic or full into
-    basicRoll_Repeat  = function(num){
+    basicRoll_Repeat  = function(num, resultDetail){
+        if(resultDetail === undefined){
+            resultDetail = "(";
+        }
+
         let result = this.basicRoll();
+        resultDetail += `${result}, `;
         num--;
 
 
         if(num > 0){
-            return result + this.basicRoll_Repeat(num);
+            const nextRoll = this.basicRoll_Repeat(num, resultDetail);
+            return {total: result + nextRoll['total'], resultDetail: nextRoll['resultDetail']};;
         }
 
-        return result;
+        return {total: result, resultDetail: resultDetail};;
     }
 
     fullRoll  = function(){
-        return this.basicRoll_Repeat(this.numDice) + this.postRollAdd;
+        let finalResult = this.basicRoll_Repeat(this.numDice);
+        finalResult['total'] += this.postRollAdd;
+        finalResult['resultDetail'] = finalResult['resultDetail'].slice(0, -2) + `) + ${this.postRollAdd}`;
+        return finalResult;
     }
 
-    fullRoll_Repeat  = function(num){
-        let result = this.fullRoll();
+    fullRoll_Repeat  = function(num, resultDetail){
+        if(resultDetail === undefined){
+            resultDetail = "(";
+        }
+        let fullResult = this.fullRoll();
+        let result = fullResult['total'];
+        resultDetail += `${fullResult['resultDetail']}, `;
         num--;
         
         if(num > 0){
-            return result + this.fullRoll_Repeat(num);
+            const nextRoll = this.fullRoll_Repeat(num, resultDetail);
+            return {total: result + nextRoll['total'], resultDetail: nextRoll['resultDetail']};
         }
 
-        return result;
+        return {total: result, resultDetail: resultDetail};
     }
 
     roll  = function(){
-        return this.fullRoll_Repeat(this.numRolls);
+        let finalResult = this.fullRoll_Repeat(this.numRolls);
+        finalResult['resultDetail'] = finalResult['resultDetail'].slice(0, -2) + ")";
+        return finalResult;
     }
 
     toString  = function(){
