@@ -54,7 +54,7 @@ class CustomButtonForm extends React.Component{
                                 readOnly />
                         </div>
                         <div className='input-row'>
-                            <input id='input-submit' className='input-submit modal-btn' type='submit' name='input-submit' />
+                            <input id='input-submit' className='input-submit modal-btn' type='submit' name='input-submit' value='Submit' />
                         </div>
                     </form>
                     <button className='modal-close-btn modal-btn' onClick={() => this.props.closeModal()}>Close</button>
