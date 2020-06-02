@@ -67,17 +67,13 @@ class App extends React.Component{
     }
 
     handleSubmit(event){
-        const forms = event.target.elements;
-        const newRoll = new Roll(forms[0], forms[1], forms[2], forms[3]);
-        const newValue = parseInt(event.target.elements[0].value);
         event.preventDefault();
-        if(Number.isInteger(newValue)){
-            const newCustomButtons = this.state.customButtons.concat([newValue]);
-            this.setState({
-                customButtons: newCustomButtons
-            });
-            this.closeModal();
-        }
+        const forms = event.target.elements;
+        const newRoll = new Roll(forms[0].value, forms[1].value, forms[2].value, forms[3].value);
+        const updatedRolls = this.state.rolls.concat(newRoll);
+        this.setState({
+            rolls: updatedRolls
+        });
     }
 
     render() {

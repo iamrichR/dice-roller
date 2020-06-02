@@ -10,18 +10,6 @@ class CustomButtonForm extends React.Component{
     }
 
     handleChange(event){
-        // if(event.target.value === ''){
-        //     this.setState({
-        //         [event.target.name]: event.target.value
-        //     });
-        // } else{
-        //     const newValue = parseInt(event.target.value);
-        //     if(Number.isInteger(newValue)){
-        //         this.setState({
-        //             [event.target.name]: newValue
-        //         });
-        //     }
-        // }
         const newRoll = Object.assign({}, this.state.roll, {[event.target.name]: event.target.value});
 
         this.setState({
@@ -30,11 +18,6 @@ class CustomButtonForm extends React.Component{
     }
 
     render(){
-        // const rollDisplayStr = `${this.state.numRolls <= 1 ? '' : this.state.numRolls} ( ${this.state.numDice}d${this.state.diceSize}+${this.state.postRollAdd} )`;
-        // const repeatDetailStr = this.state.numRolls <= 1 ? '' : ("roll " + this.state.numRolls + " times");
-        // const innerRollStr = `${this.state.numDice}d${this.state.diceSize}+${this.state.postRollAdd}`;
-        // const rollDisplayStr = `( ${innerRollStr} ) ${repeatDetailStr}`;
-
         return(
             <div className='modal-content'>
                 <div className='modal-input-container'>
@@ -59,7 +42,7 @@ class CustomButtonForm extends React.Component{
                             labelText='Modifier to roll result' 
                             value={this.state.roll.postRollAdd}
                             handleChange={(event) => this.handleChange(event)} />
-                        {/* "do you want to run this roll multiple times?" */}
+                        {/* number of rolls */}
                         <FormRow inputID='numRolls'
                             labelText='How many times to perform Roll?' 
                             value={this.state.roll.numRolls}
