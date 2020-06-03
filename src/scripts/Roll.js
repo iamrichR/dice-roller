@@ -1,3 +1,5 @@
+import Result from './Result'
+
 class Roll{
     constructor(diceSize, numDice, postRollAdd, numRolls){
         const initDiceSize = parseInt(diceSize);
@@ -28,46 +30,39 @@ class Roll{
         } else{
             this.numRolls = initNumRolls;
         }
-        
+
+
     }
 
-    basicRoll = function(){
-        let result = Math.floor(Math.random() * Math.floor(this.diceSize)+1);
-        return {
-            total: result,
-            resultDetail: `${result}`
-        }
+    basicRoll = function(result){
+        let total = Math.floor(Math.random() * Math.floor(this.diceSize)+1);
+        result.detail['rolls'].push(total);
+        return result
     }
 
-    fullRoll  = function(){
-        let finalResult = this.repeat_roll(this.numDice, this.basicRoll.bind(this));
-        finalResult['total'] += this.postRollAdd;
-        finalResult['resultDetail'] = finalResult['resultDetail'].slice(0, -2) + `) + ${this.postRollAdd}`;
-        return finalResult;
+    fullRoll  = function(result){
+        this.repeat_roll(this.numDice, this.basicRoll.bind(this), result);
+        result.total += this.postRollAdd;
+        result.detail['adds'].push(this.postRollAdd);
+        return result;
     }
 
-    repeat_roll  = function(num, func, resultDetail){
-        if(resultDetail === undefined){
-            resultDetail = "(";
-        }
-
-        let fullResult = func();
-        let result = fullResult['total'];
-        resultDetail += `${fullResult['resultDetail']}, `;
+    repeat_roll  = function(num, func, result){
+        func(result);
         num--;
 
         if(num > 0){
-            const nextRoll = this.repeat_roll(num, func, resultDetail);
-            return {total: result + nextRoll['total'], resultDetail: nextRoll['resultDetail']};
+            this.repeat_roll(num, func, result);
+            return result;
         }
 
-        return {total: result, resultDetail: resultDetail};
+        return result;
     }
 
     roll  = function(){
-        let finalResult = this.repeat_roll(this.numRolls, this.fullRoll.bind(this));
-        finalResult['resultDetail'] = finalResult['resultDetail'].slice(0, -2) + ")";
-        return finalResult;
+        let result = new Result(this);
+        this.repeat_roll(this.numRolls, this.fullRoll.bind(this), result);
+        return result;
     }
 
     toString  = function(){

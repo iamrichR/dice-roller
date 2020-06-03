@@ -1,9 +1,11 @@
 class Result{
     constructor(roll){
-        this.originRoll = roll
+        this.origin = roll
         this.total = 0;
-        this.resultDetail = {rolled: [], added: []};
+        this.detail = {rolls: [], adds: []};
     }
 
 
 }
+
+export default Result;
