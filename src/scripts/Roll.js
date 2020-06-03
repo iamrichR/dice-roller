@@ -31,46 +31,33 @@ class Roll{
         
     }
 
-    basicRoll = () => Math.floor(Math.random() * Math.floor(this.diceSize)+1);
-
-    //TODO - just for fun, figure out how to use functional programming
-    //to refactor into a generic "repeat roll" function that you can pass basic or full into
-    basicRoll_Repeat  = function(num, resultDetail){
-        if(resultDetail === undefined){
-            resultDetail = "(";
+    basicRoll = function(){
+        let result = Math.floor(Math.random() * Math.floor(this.diceSize)+1);
+        return {
+            total: result,
+            resultDetail: `${result}`
         }
-
-        let result = this.basicRoll();
-        resultDetail += `${result}, `;
-        num--;
-
-
-        if(num > 0){
-            const nextRoll = this.basicRoll_Repeat(num, resultDetail);
-            return {total: result + nextRoll['total'], resultDetail: nextRoll['resultDetail']};;
-        }
-
-        return {total: result, resultDetail: resultDetail};;
     }
 
     fullRoll  = function(){
-        let finalResult = this.basicRoll_Repeat(this.numDice);
+        let finalResult = this.repeat_roll(this.numDice, this.basicRoll.bind(this));
         finalResult['total'] += this.postRollAdd;
         finalResult['resultDetail'] = finalResult['resultDetail'].slice(0, -2) + `) + ${this.postRollAdd}`;
         return finalResult;
     }
 
-    fullRoll_Repeat  = function(num, resultDetail){
+    repeat_roll  = function(num, func, resultDetail){
         if(resultDetail === undefined){
             resultDetail = "(";
         }
-        let fullResult = this.fullRoll();
+
+        let fullResult = func();
         let result = fullResult['total'];
         resultDetail += `${fullResult['resultDetail']}, `;
         num--;
-        
+
         if(num > 0){
-            const nextRoll = this.fullRoll_Repeat(num, resultDetail);
+            const nextRoll = this.repeat_roll(num, func, resultDetail);
             return {total: result + nextRoll['total'], resultDetail: nextRoll['resultDetail']};
         }
 
@@ -78,7 +65,7 @@ class Roll{
     }
 
     roll  = function(){
-        let finalResult = this.fullRoll_Repeat(this.numRolls);
+        let finalResult = this.repeat_roll(this.numRolls, this.fullRoll.bind(this));
         finalResult['resultDetail'] = finalResult['resultDetail'].slice(0, -2) + ")";
         return finalResult;
     }
