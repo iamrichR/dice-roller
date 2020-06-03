@@ -43,7 +43,7 @@
     margin: 0.5rem auto;
 }
 
-.result-history-list .result-details{
+.result-history-list .result-header{
     position: relative;
     left: -1rem;
     margin: 0.5rem 0;
@@ -88,7 +88,7 @@
     margin: 1rem;
 }
 
-.current-result > .result-details{
+.current-result > .result-header{
     font-size: 2rem;
     margin-bottom: 0;
 }

@@ -14,7 +14,7 @@ class App extends React.Component{
         super(props);
         const basicDice = this.createBasicDice();
         this.state = {
-            currentResult: {roll: '', result: 0},
+            currentResult: {},
             rolls: basicDice,
             rollHistory: [],
             customButtons: [],
@@ -39,11 +39,11 @@ class App extends React.Component{
     }
 
     onClickDice(roll){
-        const newRoll = {roll:  roll.toString(), result: roll.roll()};
-        console.log(newRoll);
-        const newHistory = this.state.rollHistory.concat(newRoll)
+        const newResult = roll.roll();
+        console.log(newResult);
+        const newHistory = this.state.rollHistory.concat(newResult)
         this.setState({
-            currentResult: newRoll,
+            currentResult: newResult,
             rollHistory: newHistory
         });
     }

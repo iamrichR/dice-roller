@@ -34,10 +34,14 @@ function ResultHistoryDisplay(props){
 }
 
 function ResultDisplay(props){
+    const rollStr = props.result.origin === undefined ? "" : props.result.origin.toString();
+    const detailStr = props.result.detail === undefined ? "" : props.result.printDetail();
+
     return(
         <div className={'result-wrapper ' + props.contextClass}>
-            <h4 className='result-details'>{props.result.roll}</h4>
-            <p className='result-display'>{props.result.result['total']}</p>
+            <h4 className='result-header'>{rollStr}</h4>
+            <p className='result-details'>{detailStr}</p>
+            <p className='result-display'>{props.result.total}</p>
         </div>
     );
 }

@@ -35,8 +35,9 @@ class Roll{
     }
 
     basicRoll = function(result){
-        let total = Math.floor(Math.random() * Math.floor(this.diceSize)+1);
-        result.detail['rolls'].push(total);
+        let newRollResult = Math.floor(Math.random() * Math.floor(this.diceSize)+1);
+        result.detail['rolls'].push(newRollResult);
+        result.total += newRollResult;
         return result
     }
 
