@@ -69,7 +69,9 @@ class App extends React.Component{
     handleSubmit(event){
         event.preventDefault();
         const forms = event.target.elements;
-        const newRoll = new Roll(forms[0].value, forms[1].value, forms[2].value, forms[3].value);
+        const nameVal = forms[4].value === '' ? undefined : forms[4].value
+        const newRoll = new Roll(forms[0].value, forms[1].value, 
+            forms[2].value, forms[3].value, nameVal);
         const updatedRolls = this.state.rolls.concat(newRoll);
         this.setState({
             rolls: updatedRolls

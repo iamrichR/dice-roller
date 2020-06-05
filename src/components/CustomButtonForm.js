@@ -5,7 +5,7 @@ class CustomButtonForm extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            roll: new Roll()
+            roll: new Roll(),
         };
     }
 
@@ -47,6 +47,10 @@ class CustomButtonForm extends React.Component{
                             labelText='How many times to perform Roll?' 
                             value={this.state.roll.numRolls}
                             handleChange={(event) => this.handleChange(event)} />
+                        <FormRow inputID='name' 
+                            labelText='Name for your custom roll'
+                            value={this.state.name}
+                            handleChange={(event) => this.handleChange(event)}/>
                         <div className='input-row'>
                             <label htmlFor=''>Your Custom Roll:</label>
                             <input type='text' 

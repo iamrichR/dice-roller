@@ -1,7 +1,7 @@
 import Result from './Result'
 
 class Roll{
-    constructor(diceSize, numDice, postRollAdd, numRolls){
+    constructor(diceSize, numDice, postRollAdd, numRolls, name){
         const initDiceSize = parseInt(diceSize);
         const initNumDice = parseInt(numDice);
         const initPostRollAdd = parseInt(postRollAdd);
@@ -31,7 +31,9 @@ class Roll{
             this.numRolls = initNumRolls;
         }
 
-
+        if(!(name === undefined)){
+            this.name= name;
+        }
     }
 
     basicRoll = function(result){

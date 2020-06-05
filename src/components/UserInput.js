@@ -14,7 +14,7 @@ function RollList(props){
     const diceButtons = props.rolls.map((roll, idx) => {
         return <RollButton 
                 key={`roller-${roll.toString()}__${idx}`}
-                text={roll.toString()}
+                text={roll.name === undefined ? roll.toString() : roll.name}
                 onClick={() => props.onClick(roll)}/>
     });
 
