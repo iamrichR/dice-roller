@@ -69,15 +69,28 @@ class Roll{
     }
 
     toString  = function(){
-        const numRollsStr = this.numRolls <= 1 ? '' : ("roll " + this.numRolls + " times");
+        // const numRollsStr = this.numRolls <= 1 ? '' : ("roll " + this.numRolls + " times");
 
-        if(this.numDice === 1 && this.postRollAdd === 0
-            && this.numRolls === 1){
-                return `d${this.diceSize}`;
-        } else{
-            let innerStr = `${this.numDice}d${this.diceSize}`;
-            return `${this.numRolls}[${innerStr} + ${this.postRollAdd}]`;
+        // if(this.numDice === 1 && this.postRollAdd === 0
+        //     && this.numRolls === 1){
+        //         return `d${this.diceSize}`;
+        // } else{
+        //     let innerStr = `${this.numDice}d${this.diceSize}`;
+        //     return `${this.numRolls}[${innerStr} + ${this.postRollAdd}]`;
+        // }
+
+        const showNumDice = (this.numDice != 1);
+        const showNumRolls = (this.numRolls != 1);
+        const showPostRollAdd = (this.postRollAdd != 0);
+
+        let str = `d${this.diceSize}`;
+        str += showPostRollAdd ? `+${this.postRollAdd}` : '';
+        if(showNumDice){str = this.numDice+str};
+        if(showNumRolls){
+            str = `${this.numRolls}[${str}]`;
         }
+
+        return str;
     }
     
 }

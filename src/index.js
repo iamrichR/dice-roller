@@ -80,16 +80,21 @@ class App extends React.Component{
 
     handleFormChange(event){
         let newVal;
-        if(event.target.name == 'name'){
+        if(event.target.name === 'name'){
             newVal = event.target.value
+            const newCustomRoll = Object.assign({}, this.state.nextCustomRoll, {[event.target.name]: newVal});
+                this.setState({
+                    nextCustomRoll: newCustomRoll
+                });
         } else{
             newVal = parseInt(event.target.value);
+            if(Number.isInteger(newVal)){
+                const newCustomRoll = Object.assign({}, this.state.nextCustomRoll, {[event.target.name]: newVal});
+                this.setState({
+                    nextCustomRoll: newCustomRoll
+                });
+            }
         }
-        const newCustomRoll = Object.assign({}, this.state.nextCustomRoll, {[event.target.name]: newVal});
-
-        this.setState({
-            nextCustomRoll: newCustomRoll
-        });
     }
 
     render() {
