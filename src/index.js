@@ -17,8 +17,8 @@ class App extends React.Component{
             currentResult: {},
             rolls: basicDice,
             rollHistory: [],
-            customButtons: [],
-            modalIsOpen: false
+            modalIsOpen: false,
+            nextCustomRoll: new Roll()
         };
     }
 
@@ -68,13 +68,27 @@ class App extends React.Component{
 
     handleSubmit(event){
         event.preventDefault();
-        const forms = event.target.elements;
-        const nameVal = forms[4].value === '' ? undefined : forms[4].value
-        const newRoll = new Roll(forms[0].value, forms[1].value, 
-            forms[2].value, forms[3].value, nameVal);
-        const updatedRolls = this.state.rolls.concat(newRoll);
+        const newRollList = this.state.rolls.concat(this.state.nextCustomRoll)
+        const newEmptyRoll = new Roll()
         this.setState({
-            rolls: updatedRolls
+            rolls: newRollList,
+            nextCustomRoll: newEmptyRoll
+        });
+
+        this.closeModal();
+    }
+
+    handleFormChange(event){
+        let newVal;
+        if(event.target.name == 'name'){
+            newVal = event.target.value
+        } else{
+            newVal = parseInt(event.target.value);
+        }
+        const newCustomRoll = Object.assign({}, this.state.nextCustomRoll, {[event.target.name]: newVal});
+
+        this.setState({
+            nextCustomRoll: newCustomRoll
         });
     }
 
@@ -86,7 +100,9 @@ class App extends React.Component{
                     onRequestClose={() => this.closeModal()}
                 >
                     <CustomButtonForm closeModal={() => this.closeModal()}
-                        handleSubmit={(event) => this.handleSubmit(event)}/>
+                        handleFormChange={event => this.handleFormChange(event)}
+                        handleSubmit={(event) => this.handleSubmit(event)}
+                        currentRoll={this.state.nextCustomRoll}/>
                 </Modal>
                 <UserInput onClick={(roll) => this.onClickDice(roll)} 
                     rolls={this.state.rolls} />
