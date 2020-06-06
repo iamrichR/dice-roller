@@ -38,7 +38,7 @@ class Roll{
 
     basicRoll = function(result){
         let newRollResult = Math.floor(Math.random() * Math.floor(this.diceSize)+1);
-        result.detail['rolls'].push(newRollResult);
+        result.detail['rollBuffer'].push(newRollResult);
         result.total += newRollResult;
         return result
     }
@@ -46,7 +46,8 @@ class Roll{
     fullRoll  = function(result){
         this.repeat_roll(this.numDice, this.basicRoll.bind(this), result);
         result.total += this.postRollAdd;
-        result.detail['adds'].push(this.postRollAdd);
+        result.detail['rolls'].push(result.detail['rollBuffer'].slice(0));
+        result.detail['rollBuffer'] = [];
         return result;
     }
 
@@ -65,6 +66,7 @@ class Roll{
     roll  = function(){
         let result = new Result(this);
         this.repeat_roll(this.numRolls, this.fullRoll.bind(this), result);
+        result.detail['add'] = this.postRollAdd;
         return result;
     }
 
