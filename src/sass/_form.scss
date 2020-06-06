@@ -1,11 +1,16 @@
 @use '_colors';
 @use '_screens';
 
+.ReactModal__Content{
+    background-color: colors.$form-bg;
+}
+
 .modal-content{
     height: 100%;
     width: 100%;
     text-align: center;
     font-size: 1rem;
+    color: colors.$form-text;
 
     .form-heading{
         margin-bottom: 1rem;
