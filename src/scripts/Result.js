@@ -8,7 +8,7 @@ class Result{
     printDetail = function(){
         let detailStr = "";
         this.detail.rolls.forEach(item => {
-            detailStr += `(${item}${this.detail.add != 0 ? (" +" + this.detail['add']) : ''}), `;
+            detailStr += `(${item}${this.detail.add !== 0 ? (" +" + this.detail['add']) : ''}), `;
         });
 
         return detailStr.slice(0,-2);

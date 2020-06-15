@@ -1,5 +1,4 @@
 import React from 'react';
-import Roll from '../scripts/Roll'
 
 function UserInput(props){
     return(

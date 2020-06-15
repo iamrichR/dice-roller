@@ -71,9 +71,9 @@ class Roll{
     }
 
     toString  = function(){
-        const showNumDice = (this.numDice != 1);
-        const showNumRolls = (this.numRolls != 1);
-        const showPostRollAdd = (this.postRollAdd != 0);
+        const showNumDice = (this.numDice !== 1);
+        const showNumRolls = (this.numRolls !== 1);
+        const showPostRollAdd = (this.postRollAdd !== 0);
 
         let str = `d${this.diceSize}`;
         str += showPostRollAdd ? `+${this.postRollAdd}` : '';
