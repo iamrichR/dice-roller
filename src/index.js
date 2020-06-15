@@ -9,6 +9,8 @@ import Roll from './scripts/Roll';
 import '../node_modules/normalize.css/normalize.css';
 import './css/index.css';
 
+Modal.setAppElement('#root');
+
 class App extends React.Component{
     constructor(props){
         super(props);
@@ -40,7 +42,6 @@ class App extends React.Component{
 
     onClickDice(roll){
         const newResult = roll.roll();
-        console.log(newResult);
         const newHistory = this.state.rollHistory.concat(newResult)
         this.setState({
             currentResult: newResult,
