@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "311e84f1ef03ab96c1f26a874e8aa83b",
+    "revision": "3fd52094dc27d445554d43e9e12d5c4a",
     "url": "/dice-roller/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dice-roller/static/css/2.764ccc25.chunk.css"
   },
   {
-    "revision": "27186e6e39d66b0c292d",
+    "revision": "aa2d0056d78e1ce55614",
     "url": "/dice-roller/static/css/main.9eeef555.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/dice-roller/static/js/2.c5ba8306.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "27186e6e39d66b0c292d",
-    "url": "/dice-roller/static/js/main.dfa0c1f2.chunk.js"
+    "revision": "aa2d0056d78e1ce55614",
+    "url": "/dice-roller/static/js/main.d057da67.chunk.js"
   },
   {
     "revision": "6b153dc6a273cab4dac4",
