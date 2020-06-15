@@ -4,12 +4,12 @@ import Roll from '../scripts/Roll';
 function CustomButtonForm(props){
     return(
         <div className='modal-content'>
+            <div className='form-heading'>
+                <h3>Add a custom Dice</h3>
+                <p>Please enter custom dice size</p>
+                <small>(Number values only)</small>
+            </div>
             <div className='modal-input-container'>
-                <div className='form-heading'>
-                    <h3>Add a custom Dice</h3>
-                    <p>Please enter custom dice size</p>
-                    <small>(Number values only)</small>
-                </div>
                 <form className='custom-btn-form' onSubmit={props.handleSubmit}>
                     {/* dice size */}
                     <FormRow inputID='diceSize'
@@ -36,7 +36,7 @@ function CustomButtonForm(props){
                         value={props.currentRoll.name}
                         handleChange={(event) => props.handleFormChange(event)}/>
                     <div className='input-row'>
-                        <label htmlFor=''>Your Custom Roll:</label>
+                        <label htmlFor='' className='input-label'>Your Custom Roll</label>
                         <input type='text' 
                             value={props.currentRoll.toString()}
                             readOnly />
@@ -44,8 +44,11 @@ function CustomButtonForm(props){
                     <div className='input-row'>
                         <input id='input-submit' className='input-submit modal-btn' type='submit' name='input-submit' value='Submit' />
                     </div>
+                    <div className='input-row'>
+                        <button className='modal-close-btn modal-btn' onClick={() => props.closeModal()}>Close</button>
+                    </div>
                 </form>
-                <button className='modal-close-btn modal-btn' onClick={() => props.closeModal()}>Close</button>
+                
             </div>
         </div>
     );
